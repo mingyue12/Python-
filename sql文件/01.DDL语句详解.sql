@@ -45,7 +45,7 @@ SQL语句介绍：
             primary key：主键约束，特点：不能为空，唯一，不能重复
             not null：   非空约束，即该列值不能为空，但是可以重复
             unique：     唯一约束，即该列值必须是唯一的，不能重复
-            default：    默认值约束，即该列值默认值为指定值，不指定时，为null
+            default：    默认值约束，即该列值默认值为指定值，不指定时，为null,等于Python的缺省参数
         多表约束：
             foreign key：外键约束，特点：不能为空，必须是其他表的主键值
 
@@ -151,4 +151,4 @@ alter table stu change address addr VARCHAR(10) NOT NULL COMMENT '学生地址';
 # 格式：alter table 数据表名称 drop 字段名;
 alter table stu drop addr;
 
-
+show tables;

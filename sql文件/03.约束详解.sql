@@ -69,3 +69,10 @@ TRUNCATE TABLE student;     # 删除所有数据，主键id会重置为1
 show TABLES;
 
 # 2.建表，员工表（employee），字段（id,name,phone,gender,addr）
+CREATE TABLE IF NOT EXISTS employee(
+    eid int PRIMARY KEY AUTO_INCREMENT,  # 员工id
+    name varchar(20) NOT NULL,           # 姓名
+    phone VARCHAR(11) unique NOT NULL,   # 手机号                     # 手机号
+    gender char(1),                      # 性别
+    address varchar(20) DEFAULT '北京'    # 地址
+)

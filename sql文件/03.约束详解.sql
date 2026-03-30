@@ -72,7 +72,20 @@ show TABLES;
 CREATE TABLE IF NOT EXISTS employee(
     eid int PRIMARY KEY AUTO_INCREMENT,  # 员工id
     name varchar(20) NOT NULL,           # 姓名
-    phone VARCHAR(11) unique NOT NULL,   # 手机号                     # 手机号
+    phone VARCHAR(11) unique NOT NULL,   # 手机号，不能为空，唯一
     gender char(1),                      # 性别
     address varchar(20) DEFAULT '北京'    # 地址
-)
+);
+
+# 3.查看表结构
+desc employee;
+
+# 4.往表中添加数据
+INSERT INTO employee VALUES(NULL, '张三', '13800000000', '男', '北京');
+INSERT INTO employee VALUES(NULL, '李四', '13800000001', '男', '上海');
+insert INTO employee (eid, name, phone, gender) VALUES(NULL, '王五', '13800000002', '男');
+
+
+# 5.查看表数据
+select * from employee;
+

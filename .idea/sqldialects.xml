@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/sql文件/02.DML语句详解.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/sql文件/03.约束详解.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/sql文件/04.单表查询相关.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql文件/05.多表相关.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/../../mysql/test1.sql" dialect="MySQL" />
   </component>
 </project>

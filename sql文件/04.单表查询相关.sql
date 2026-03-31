@@ -230,3 +230,73 @@ GROUP BY
 HAVING
     商品数量 > 2;
 
+# -------------------- 案例六: 去重查询 --------------------#
+/*
+去重解释：
+    概述：
+        把相同的数据给移除掉，只保留一份。
+    方式：
+        1.distinct:去重
+        2.分组实现去重
+ */
+# 1.查看表数据
+SELECT * FROM product;
+
+# 2.查看去重后的所有分类
+SELECT DISTINCT product.category_id FROM product;
+
+# 3.按照分类id，价格进行去重
+SELECT DISTINCT category_id, price FROM product;
+
+# 4.去重思路2：分组去重
+SELECT product.category_id FROM product GROUP BY category_id;
+SELECT product.category_id, product.price FROM product GROUP BY category_id, price;
+
+# -------------------- 案例七: 分页查询 --------------------#
+/*
+    分页查询：
+        好处：
+            1.提高用户体验
+            2.降低服务器端压力
+            3.降低浏览器端压力
+        概述：
+            分页查询就是把数据分成多页，每页显示一部分数据，用户可以通过点击下一页，上一页，跳转到指定页码来查看数据
+        格式：
+            select
+                列名 [as 别名],列名 [as 别名] ...
+            from
+                数据表名
+            limit
+                起始索引，数据条数
+细节：
+    1.在sql中，每条数据都是有索引的，且索引从0开始，
+    2.关于分页
+        总页数：(数据的总条数 + 每页的数据条数 - 1) // 每页的数据条数
+        每页的数据条数：产品经理
+        每页的起始索引：(当前页数 - 1) * 每页的数据条数
+        数据总条数：      count(*)
+ */
+
+# 1.查看表数据
+select * from product;
+
+# 2.场景3:3条/页
+SELECT * from product limit 0,3; -- 起始索引为0，数据条数为3,第一页
+SELECT * from product limit 3,3; -- 起始索引为3，数据条数为3,第二页
+SELECT * from product limit 6,3; -- 起始索引为6，数据条数为3,第三页
+
+# 3.场景2:5条/页
+SELECT * from product limit 0,5;    -- 起始索引为0，数据条数为5,第一页
+SELECT * from product limit 5,5;    -- 起始索引为5，数据条数为5,第二页
+SELECT * from product limit 10,5;   -- 起始索引为10，数据条数为5,第三页
+
+# 4.场景3:2条/页
+SELECT * from product limit 0,2;    -- 起始索引为0，数据条数为2,第一页
+SELECT * from product limit 2,2;    -- 起始索引为2，数据条数为2,第二页
+SELECT * from product limit 4,2;    -- 起始索引为4，数据条数为2,第三页
+
+#
+
+
+
+

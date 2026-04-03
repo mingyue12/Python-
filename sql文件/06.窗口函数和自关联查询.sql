@@ -83,7 +83,15 @@ FROM (
      ) as t1
 where row_num <= 2;
 
-# CTE公共表表达式
+# CTE公共表表达式,可以吧常用的数据集封装成新表，方便操作。
+/*
+ 格式：with cte_name1 as (
+          select ...
+      ),
+     cte_name2 as (
+          select ...
+      )...
+ */
 with t1 as (
          select *,
                 rank() over(PARTITION BY dept_id ORDER BY salary DESC ) as row_num
@@ -92,6 +100,38 @@ with t1 as (
 select *
 from t1
 where row_num <= 2;
+
+# 扩展：一个需求表示CTE表达式的强大之处
+with t1 as (SELECT * from employee),
+     t2 as (SELECT * from employee where dept_id = 10),
+     t3 as (SELECT * from employee where dept_id = 20),
+     t4 as (SELECT * from employee where dept_id = 30),
+     t5 as (SELECT *, sum(salary) over() as total_salary from employee)
+select * from t5;
+
+# ------------------- 案例2：自关联查询-------------#
+/*
+ # 解释：表自己和自己做关了查询 -> 自关联，自链接查询
+ # 应用场景：省市区(行政区域表)信息查询。
+ # 如果不考虑自连接查询，设计行政区域表，要求有行政区域的id和行政区域名，例如：410000->河南省，如何设计？
+ 三个字段：区域自身id，   区域名， 区域的父级id
+            410000     河南省      null
+            410100     郑州市      410000
+            410200     开封市      410000
+            410101     二七区      410100
+            410105     郑东新区    410100
+            ...
+ */
+
+# 查表
+SHOW TABLES;
+
+
+
+
+
+
+
 
 
 

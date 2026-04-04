@@ -138,6 +138,43 @@ select * from areas where pid = '410000';
 # 查看新乡市所有的县区
 SELECT * from areas WHERE pid = '410700';
 
+# 4.查看所有省，所有市，所有县区的信息
+select
+    province.id,province.title,      # 省级的id，名字
+    city.id,city.title,     # 省级的id，名字
+    county.id,county.title      # 省级的id，名字
+from
+    areas as county     # 县区表
+JOIN
+    areas as city  on county.pid = city.id    # 市表
+join
+    areas as province on city.pid = province.id;    # 省表
+
+# 5.精准查找信息
+select
+    province.id,province.title,      # 省级的id，名字
+    city.id,city.title,     # 省级的id，名字
+    county.id,county.title      # 省级的id，名字
+from
+    areas as county     # 县区表
+JOIN
+    areas as city  on county.pid = city.id    # 市表
+join
+    areas as province on city.pid = province.id    # 省表
+WHERE
+     county.id = '231201';       # 身份证号前六位
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

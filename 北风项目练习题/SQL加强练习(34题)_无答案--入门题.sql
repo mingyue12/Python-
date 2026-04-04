@@ -17,6 +17,14 @@ show tables;
 SELECT * FROM employees;
 
 -- 需求2: 查询每个客户的 ID, company name, contact name, contact title, city, 和 country.并按照国家名字排序
+SELECT
+    customer_id,company_name,contact_name,contact_title,city,country
+from
+    customers
+ORDER BY
+    country
+;
+
 
 
 -- 替换快捷键: ctrl + 字母R
